@@ -165,7 +165,7 @@ function App({ initialOrpName }) {
   const doChangeOrp = (newOrpName, data) => {
     console.log(`changing orp ${newOrpName}`);
     setActiveOrp(newOrpName);
-    window.location.hash = newOrpName;
+    if (newOrpName) window.location.hash = newOrpName;
     if (data && data.data) {
       console.log("setting filtered data");
       const filtered = data.data.filter(
