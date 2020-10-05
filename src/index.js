@@ -4,9 +4,12 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+
+const orpName=window.location.hash?decodeURI(window.location.hash.substring(1)):null
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App initialOrpName={orpName}/>
   </React.StrictMode>,
   document.getElementById('root')
 );
