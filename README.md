@@ -1,3 +1,10 @@
+# Zobrazení historie Covid-19 na území obcí s rozšířenou působností
+
+Na základě dat MZČR. Data jsou stahována přímo do prohlížeče.
+
+
+# Jak sestavit
+ 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
