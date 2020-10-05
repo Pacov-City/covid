@@ -227,7 +227,7 @@ function App({ initialOrpName }) {
         </Grid>
         <Grid item style={{textAlign: 'right'}}>
          <Typography variant="caption">Zdroj dat: <a href="https://onemocneni-aktualne.mzcr.cz/api/v2/covid-19">Ministerstvo zdravotnictví ČR</a></Typography>
-         <a href=""><img src="/github.png" alt="github link"/></a>
+         <a href="https://github.com/Pacov-City/covid"><img src="/github.png" alt="github link"/></a>
         </Grid>
       </Grid>
   );
