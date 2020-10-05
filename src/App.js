@@ -158,9 +158,8 @@ function App({ initialOrpName }) {
   };
 
   const doRefresh = () => {
-    //setData(null);
-    //fetchData();
-    setFetchError("400 test error")
+    setData(null);
+    fetchData();
   };
 
   const doChangeOrp = (newOrpName, data) => {
