@@ -171,7 +171,7 @@ function App({ initialOrpName }) {
       doChangeOrp(activeOrp, data);
     }
     const fetchEndTime = new Date().getTime()
-    logEventToServer(`fetch-finished/${fetchStartTime-fetchEndTime}`)
+    logEventToServer(`fetch-finished/${fetchEndTime-fetchStartTime}`)
   };
 
   const doRefresh = () => {
