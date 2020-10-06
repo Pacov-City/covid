@@ -7,6 +7,13 @@ import * as serviceWorker from './serviceWorker';
 
 const orpName=window.location.hash?decodeURI(window.location.hash.substring(1)):null
 
+let clientId = localStorage.getItem("client-id")
+if (!clientId){
+  clientId=`${Math.random()}-${Math.random()}` 
+  localStorage.setItem("client-id",clientId)
+}
+window.clientId = clientId
+
 ReactDOM.render(
   <React.StrictMode>
     <App initialOrpName={orpName}/>

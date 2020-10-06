@@ -35,6 +35,18 @@ const PREVALENCE_IDX = 7;
 const INCIDENCE_IDX = 4;
 const HOSPIT_IDX = 10;
 
+const logEventToServer = (event) => {
+  console.log(`logging to server`)
+  fetch(`/log-event/${window.clientId?window.clientId:"id-not-found"}/${event}`)
+  .then((res)=>{
+    console.log("logged ...")
+  })
+  .catch((err) => {
+      console.error("failed to log event ${event}")
+  })
+}
+
+
 const formatDataForPlot = (data, dataIndex) => {
   const ret = data.map((el, i) => {
     return {
@@ -93,6 +105,7 @@ function App({ initialOrpName }) {
 
   useEffect(() => {
     console.log("mounting ccomponent");
+    logEventToServer(`mounted/${encodeURI(window.location.hash.substring(1))}`)
     fetchData();
   }, []);
 
@@ -137,6 +150,7 @@ function App({ initialOrpName }) {
       fetchError=true
     }
     if (fetchError){
+      logEventToServer('fetch-data-failed')
       setFetchError(`Chyba při stahování dat`)
       return
     }
@@ -164,6 +178,7 @@ function App({ initialOrpName }) {
 
   const doChangeOrp = (newOrpName, data) => {
     console.log(`changing orp ${newOrpName}`);
+    logEventToServer(`change-orp/${encodeURI(newOrpName)}`)
     setActiveOrp(newOrpName);
     if (newOrpName) window.location.hash = newOrpName;
     if (data && data.data) {
