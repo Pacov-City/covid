@@ -126,6 +126,7 @@ function App({ initialOrpName }) {
 
   const fetchData = async () => {
     console.log("fetching data");
+    const fetchStartTime = new Date().getTime()
     setFetchError("")
     let resp=null;
     let respError = null;
@@ -169,6 +170,8 @@ function App({ initialOrpName }) {
     if (activeOrp) {
       doChangeOrp(activeOrp, data);
     }
+    const fetchEndTime = new Date().getTime()
+    logEventToServer(`fetch-finished/${fetchStartTime-fetchEndTime}`)
   };
 
   const doRefresh = () => {
