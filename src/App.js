@@ -105,6 +105,9 @@ function App({ initialOrpName }) {
 
   useEffect(() => {
     console.log("mounting ccomponent");
+    if (window.clientIdNew){
+      logEventToServer(`new-client`)
+    }
     logEventToServer(`mounted/${encodeURI(window.location.hash.substring(1))}`)
     fetchData();
   }, []);

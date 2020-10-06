@@ -9,8 +9,9 @@ const orpName=window.location.hash?decodeURI(window.location.hash.substring(1)):
 
 let clientId = localStorage.getItem("client-id")
 if (!clientId){
-  clientId=`${Math.random()}-${Math.random()}` 
+  clientId=`${Math.random()}-${Math.random()}`
   localStorage.setItem("client-id",clientId)
+  window.clientIdNew=true
 }
 window.clientId = clientId
 
