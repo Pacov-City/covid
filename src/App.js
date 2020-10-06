@@ -192,12 +192,13 @@ function App({ initialOrpName }) {
       const filtered = data.data.filter(
         (el) => el[ORP_NAME_IDX] === newOrpName
       );
+      console.log(filtered)
       setFilteredData(filtered);
       const lastEntry = filtered[filtered.length - 1];
       if (lastEntry) {
         setLastNumbers({
           datum: lastEntry[DATUM_IDX],
-          pozitivnich: lastEntry[INCIDENCE_IDX],
+          pozitivnich: lastEntry[PREVALENCE_IDX],
           hospitalizovanych: lastEntry[HOSPIT_IDX],
         });
       } else {
