@@ -11,7 +11,8 @@ export const fetchData = async () => {
     resp = await fetch("/orp.csv");
   } else {
     resp = await fetch(
-      "https://onemocneni-aktualne.mzcr.cz/api/account/verejne-distribuovana-data/file/dip%252Fweb_orp.csv"
+      'https://onemocneni-aktualne.mzcr.cz/api/v2/covid-19/orp.csv'
+      //"https://onemocneni-aktualne.mzcr.cz/api/account/verejne-distribuovana-data/file/dip%252Fweb_orp.csv"
     );
   }
 

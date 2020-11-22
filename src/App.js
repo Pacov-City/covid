@@ -45,13 +45,14 @@ function App() {
   const error = useSelector(state=>state.error)
   const lastNumbers = useSelector(state=>state.lastNumbers)
   const filteredData = useSelector(state=>state.filteredData)
+  const stat = useSelector(state=>state)
 
   const doSelectOrp = (orpId) => {
     dispatch(selectOrp(orpId)) 
   }
 
 
-  console.log(`drawing with orp ${orpName}`);
+  console.log(`drawing with state:` ,stat);
   return (
       <Grid container direction="column" justify="space-around" style={{padding: '2ex'}}>
         <Grid container direction="column" item alignContent="center"  justify="space-evenly" style={{marginBottom: '1ex', textAlign:'center'}}>  

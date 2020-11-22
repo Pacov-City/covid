@@ -14,6 +14,7 @@ const initialState = {
 }
 
 export function covidOrp(state=initialState, action){
+    console.log("action", action)
     switch (action.type){
         case SET_DATA: return {
             data: action.data,
@@ -24,7 +25,7 @@ export function covidOrp(state=initialState, action){
         };break;
         case SELECT_ORP: return {
             ...state,
-            ...processOrpSelection(state,action.orpId)
+            ...processOrpSelection(state,action.data)
         };break;
         case SET_ERROR: return {
             ...state,

@@ -7,10 +7,12 @@ import {
   YAxis,
   LineSeries,
 } from "react-vis";
+
 import { DATUM_IDX, HOSPIT_IDX, PREVALENCE_IDX } from "./data-format.js";
 
 const formatDataForPlot = (data, dataIndex) => {
   const ret = data.map((el, i) => {
+    //console.log("data", el[DATUM_IDX], el[dataIndex])
     return {
       x: String(el[DATUM_IDX]),
       y: Number.parseFloat(el[dataIndex]) || 0,
@@ -19,25 +21,28 @@ const formatDataForPlot = (data, dataIndex) => {
   return ret;
 };
 
-export const Plot = ({ filteredData, onNearestX, size }) => {
+export const Plot = ({ filteredData, size }) => {
   console.log("size ", size);
   const tickValues = [];
   let lastMonth = "";
 
   if (!filteredData) return null
     
-  filteredData.forEach((el) => {
-    const month = el[DATUM_IDX].substring(5, 7);
-    if (month !== lastMonth) {
-      tickValues.push(el[DATUM_IDX]);
-      lastMonth = month;
+  filteredData.forEach((el,idx) => {
+    if ( el && el[DATUM_IDX]){
+      const month = el[DATUM_IDX].substring(5, 7);
+      if (month !== lastMonth) {
+        tickValues.push(el[DATUM_IDX]);
+        lastMonth = month;
+      }  
+    } else {
+      console.log("empty el", idx)
     }
   });
   return (
     <FlexibleWidthXYPlot
       height={600}
       xType="ordinal"
-      onNearestX={(value, info) => console.log(value, info)}
     >
       <VerticalGridLines />
       <HorizontalGridLines />
