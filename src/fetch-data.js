@@ -8,7 +8,10 @@ export const fetchData = async () => {
   let resp = null;
   let respError = null;
   if (window.location.hostname === "localhost") {
-    resp = await fetch("/orp.csv");
+    resp = await fetch(
+      'https://onemocneni-aktualne.mzcr.cz/api/v2/covid-19/orp.csv'
+      //"/orp.csv"
+    );
   } else {
     resp = await fetch(
       'https://onemocneni-aktualne.mzcr.cz/api/v2/covid-19/orp.csv'
@@ -28,7 +31,7 @@ export const fetchData = async () => {
 
   const dataText = await resp.text();
   const data = new Parser({
-    delimiter: ";",
+    delimiter: ",",
     newline: "\r\n",
     header: true,
   }).parse(dataText);

@@ -14,35 +14,44 @@ const initialState = {
 }
 
 export function covidOrp(state=initialState, action){
-    console.log("action", action)
+    //console.log("action", action, state)
+    let newState=state
     switch (action.type){
-        case SET_DATA: return {
+        case SET_DATA: newState = {
             data: action.data,
             ...computeOrpListAndMap(action.data),
             filteredData: null,
             selectedOrp: null,
             lastNumbers: null
         };break;
-        case SELECT_ORP: return {
+        case SELECT_ORP: newState = {
             ...state,
             ...processOrpSelection(state,action.data)
         };break;
-        case SET_ERROR: return {
+        case SET_ERROR: newState = {
             ...state,
             error: action.error
         }
-        default: return state;
+        default: return newState = state;
     }
+    //console.log("newState",newState)
+    return newState
 }
 
 function computeOrpListAndMap(data){
-    if (!(data && data.data)) return null; //do nothing when no data
+    if (!(data && data.data)) {
+        console.log("no data")
+        return null; //do nothing when no data
+    }
     const orpMap = {};
     data.data.forEach((row, i) => {
+      //console.log("row", row)
       if (i == 0) return; //skip header
       const orpName = row[ORP_NAME_IDX]
       const orpId = row[ORP_ID_IDX]
-      if (!orpMap[orpId]) {
+      //console.log("orp: ", orpId, orpName)
+      if (! orpMap[orpId] ) {
+        //console.log("first entry for orp", orpId, orpName)
         orpMap[orpId] = {
             name: orpName,
             data: []
