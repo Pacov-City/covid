@@ -53,9 +53,9 @@ function App() {
 
 
   console.log(`drawing with state:`, stat);
-  return (
-    <h1>Omlouváme se, probíhá úprava aplikace pro příjem dat z nového rozhraní MZČR</h1>
-  )
+  // return (
+  //   <h1>Omlouváme se, probíhá úprava aplikace pro příjem dat z nového rozhraní MZČR</h1>
+  // )
   return (
       <Grid container direction="column" justify="space-around" style={{padding: '2ex'}}>
         <Grid container direction="column" item alignContent="center"  justify="space-evenly" style={{marginBottom: '1ex', textAlign:'center'}}>  
